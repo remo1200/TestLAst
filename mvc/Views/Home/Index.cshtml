@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var products = ViewData["Products"] as List<Product>;
+    var inventories = ViewData["Inventory"] as List<Inventory>;
+
+}
+
+<div class="text-center">
+
+    <h2 class="mt-4 mb-3">Products</h2>
+
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Category</td>
+            </tr>
+        </thead>
+        <tb>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.CategoryName</td>
+                </tr>
+            }
+        </tb>
+    </table>
+</div>

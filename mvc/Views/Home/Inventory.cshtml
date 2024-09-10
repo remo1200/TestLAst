@@ -1,0 +1,58 @@
+﻿@{
+
+    var inventories = ViewData["Inventories"] as List<Inventory>;
+    var categories = ViewData["Categories"] as List<Category>;
+    var selectedCat = ViewData["SelectedCat"] as int?;
+
+}
+
+<div class="text-center">
+
+    <h2 class="mt-2">Inventory</h2>
+
+    @using (Html.BeginForm("Inventory", "Home", FormMethod.Post))
+    {
+        <select name="selectedCategory" onchange="this.form.submit()" class="form-control">
+            <option value="">Select an option</option>
+            @foreach (var category in categories)
+            {
+                @if (selectedCat == category.Id)
+                {
+                    <option value=@category.Id selected>@category.Name</option>
+                }
+                else
+                {
+                    <option value=@category.Id>@category.Name</option>
+                }
+
+
+            }
+        </select>
+    }
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Product Id</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Category</td>
+            </tr>
+        </thead>
+        <tb>
+            @foreach (var inventory in inventories)
+            {
+                <tr>
+                    <td>@inventory.ProductId</td>
+                    <td>@inventory.Product</td>
+                    <td>@inventory.Price</td>
+                    <td>@inventory.Quantity</td>
+                    <td>@inventory.Category</td>
+                </tr>
+            }
+        </tb>
+    </table>
+</div>
